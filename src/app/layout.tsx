@@ -1,8 +1,9 @@
 // src/app/layout.tsx
-"use client"; // Add this line at the top of the file
+"use client"; // Ensure this is a client component
 
 import type { Metadata } from "next";
 import localFont from "next/font/local";
+import { SessionProvider } from "next-auth/react"; // Import SessionProvider
 import "./globals.css";
 
 const geistSans = localFont({
@@ -29,7 +30,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={`${geistSans.variable} ${geistMono.variable}`}>
-        {children}
+        <SessionProvider>{children}</SessionProvider> {/* Wrap children with SessionProvider */}
       </body>
     </html>
   );

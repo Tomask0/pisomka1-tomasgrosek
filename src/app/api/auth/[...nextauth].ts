@@ -1,7 +1,8 @@
 import NextAuth from "next-auth";
 import GoogleProvider from "next-auth/providers/google";
+import type { AuthOptions, SessionStrategy } from "next-auth"; // Import AuthOptions and SessionStrategy
 
-export const authOptions = {
+export const authOptions: AuthOptions = {
   providers: [
     GoogleProvider({
       clientId: process.env.GOOGLE_CLIENT_ID || "",
@@ -12,7 +13,7 @@ export const authOptions = {
     signIn: "/auth/signin", // You can customize the sign-in page path
   },
   session: {
-    strategy: "jwt",
+    strategy: "jwt" as SessionStrategy, // Cast to SessionStrategy
   },
 };
 
